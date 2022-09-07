@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+        <input type="text" id="msg">
+        <button>点我发送请求</button>
+    </div>
+    <script>
+        const btn = document.getElementsByTagName('button')[0];
+        // const msg = document.getElementById('msg');
+        btn.addEventListener('click', throttle(submit, 2000), false);
+
+        function submit(e) {
+            console.log(e, this);
+        };
+
+        function throttle(fn, delay) {
+            var begin = 0;
+            return function () {
+                var cur = new Date().getTime();
+                if (cur - begin >= delay) {
+                    fn.apply(this, arguments);
+                    begin = cur;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

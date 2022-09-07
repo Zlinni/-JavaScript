@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 500px;
+            height: 500px;
+            background-color: pink;
+        }
+        .children{
+            width: 200px;
+            height: 200px;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="children"></div>
+    </div>
+    <script>
+        let parent = document.getElementsByClassName('parent')[0];
+        let children = document.getElementsByClassName('children')[0];
+        parent.addEventListener('mousedown',function(){
+            console.log('我是父亲')
+        },false)
+        children.addEventListener('click',function(e){
+            console.log('我是孩子')
+            e.stopPropagation();
+        },false)
+    </script>
+</body>
+</html>
